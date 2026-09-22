@@ -573,13 +573,13 @@ mark {
 }
 
 .news-card {
+  flex: 1 1 250px;
+  min-width: 0; /* lets long titles/links wrap instead of overflowing */
   background: #fff;
   border-left: 5px solid #2b6cb0;
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  flex: 1 1 220px;
-  min-width: 220px;
 }
 
 .news-date {
