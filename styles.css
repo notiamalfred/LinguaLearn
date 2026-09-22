@@ -567,8 +567,8 @@ mark {
 }
 
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
@@ -578,6 +578,8 @@ mark {
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  flex: 1 1 220px;
+  min-width: 220px;
 }
 
 .news-date {
