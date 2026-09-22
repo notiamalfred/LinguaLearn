@@ -554,3 +554,55 @@ mark {
     margin-bottom: 24px;
   }
 }
+
+.news {
+  padding: 64px 0;
+  background: #edf2f7;
+}
+
+.news h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.news-card {
+  background: #fff;
+  border-left: 5px solid #2b6cb0;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.news-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 8px;
+}
+
+.news-card h3 {
+  color: #1a365d;
+  margin-bottom: 8px;
+}
+
+.news-card p {
+  color: #4a5568;
+  margin-bottom: 12px;
+}
+
+.news-link {
+  color: #2b6cb0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  color: #f6ad55;
+}
