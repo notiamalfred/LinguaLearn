@@ -749,3 +749,6 @@ mark {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+body.menu-open .site-header {
+  z-index: 60;
+}
