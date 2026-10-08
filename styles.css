@@ -749,3 +749,7 @@ mark {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+body.menu-open .skill-search {
+  position: static;
+  z-index: auto;
+}
