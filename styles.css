@@ -611,8 +611,9 @@ mark {
 
 /* ---------- Global skill search ---------- */
 .skill-search {
-  position: relative;
-  z-index: 5;
+  position: sticky;
+  top: 0;
+  z-index: 40;
   padding: 0.75rem 1rem;
   background: var(--bg, #fff);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
