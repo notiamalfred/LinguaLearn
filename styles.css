@@ -698,21 +698,6 @@ mark {
   background: rgba(0, 0, 0, 0.08);
 }
 
-.header-inner .search-results {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  max-height: 60vh;
-  overflow-y: auto;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  z-index: 100;
-  text-align: left;
-}
-
 .header-inner .skill-search__status {
   position: absolute;
   top: calc(100% + 6px);
@@ -760,12 +745,9 @@ mark {
   display: block;
   padding: .55rem .85rem;
   text-decoration: none;
-  color: inherit;
   border-bottom: 1px solid rgba(0,0,0,.05);
 }
 .search-result:last-child { border-bottom: 0; }
-.search-result:hover,
-.search-result:focus { background: #f3f4f6; }
 
 .search-result__page {
   display: inline-block;
