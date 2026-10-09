@@ -785,3 +785,37 @@ mark {
 body.menu-open .site-header {
   z-index: 60;
 }
+
+.header-inner .search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 100;
+  text-align: left;
+  color: #2d3748;              /* ← ADD THIS */
+}
+
+/* Also pin the color on the anchors and spans, in case anything
+   else in the cascade tries to hand them white again. */
+.header-inner .search-result,
+.header-inner .search-result:visited,
+.header-inner .search-result__text {
+  color: #2d3748;              /* ← ADD THIS */
+}
+
+.header-inner .search-result__page {
+  color: #718096;              /* ← softer gray for the page label */
+}
+
+.header-inner .search-result:hover,
+.header-inner .search-result:focus {
+  background: #f3f4f6;
+  color: #2d3748;
+}
