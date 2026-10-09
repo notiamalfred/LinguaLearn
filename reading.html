@@ -10,6 +10,38 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">Lingua<span>Learn</span></a>
+
+      <div class="skill-search" role="search">
+        <div class="skill-search__field">
+          <svg class="skill-search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+
+          <label class="visually-hidden" for="skillSearch">Search skills</label>
+          <input
+            id="skillSearch"
+            type="search"
+            placeholder="Search skills…  (press / )"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="skillSearchStatus"
+          >
+
+          <button
+            id="skillSearchClear"
+            class="skill-search__clear"
+            type="button"
+            hidden
+            aria-label="Clear search"
+          >&times;</button>
+
+          <div id="searchResults" class="search-results" hidden></div>
+        </div>
+
+        <p id="skillSearchStatus" class="skill-search__status" role="status" aria-live="polite"></p>
+      </div>
+
       <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -50,7 +82,7 @@
             <li><strong>Grammar:</strong> Pay attention to phrases like <mark>"Your answers must be grammatically correct."</mark> If the question states "taken from the passage", you usually need to copy the exact word. However, sometimes a word needs to change from singular to plural or verb tense to fit the new sentence. Always read the context carefully.</li>
           </ul>
         </article>
-        
+
         <article class="skill-card">
           <h3>Skimming</h3>
           <p>To understand the topic of a text, you do not need to read every word. Skimming is useful when answering questions that require you to identify the theme or overall views expressed in a text.</p>
@@ -309,14 +341,14 @@
             <p><strong>dysfunctional</strong></p>
           </div>
         </article>
-        
+
       <article class="skill-card example-card">
           <h3>Example 6 <span class="source-tag">2021 DSE P1 A Q27</span></h3>
           <blockquote class="passage-quote">
             <p>[6] Central to our stewardship program, however, is employee engagement. Last year, we had about 60 'Go Green Ambassadors' but less than 50 percent of our employees attended our sustainability events. We have three measures to improve employee engagement.</p>
             <p>[7] All new staff need to attend training sessions to increase awareness of environmental issues facing Southeast Asia as well as Singapore, with a focus on solutions that our company promotes to solve these problems. Additionally, we should provide rewards for different teams and departments when they meet their key performance indicators. Finally, we plan to host innovation contests for our employees to promote solutions that are unique and applicable to their specific departments.</p>
           </blockquote>
-          
+
           <div class="example-question">
             <p><strong>Question:</strong> Complete the following summary by writing <u>ONE word</u> taken from <u>paragraphs 6 to 7</u> in each blank below. Your answers must be <u>grammatically correct</u>. (4 marks)</p>
             <p>The (i) ________ of our staff members is the key to our success in environmental goals. For this reason, we would like to implement three initiatives that aim to increase participation. To raise their awareness of all Star Resort environmental policies, (ii) ________ will be mandatory for all new employees. We know that all employees like to receive (iii) ________ when they reach their targets. So these will be provided as our second initiative. Also, employee ownership of initiatives is a motivator so we can hold competitions to encourage employees' (iv) ________ in finding new solutions.</p>
@@ -339,7 +371,7 @@
 
           <div class="example-step">
             <h4>Skill 2 & 3: Find the clues and look forwards/backwards</h4>
-            
+
             <p><strong>(i) The ________ of our staff members is the key to our success...</strong></p>
             <ul>
               <li>Clue: "staff members" is a synonym for "employees". "Key to our success" relates to being "Central to our stewardship program".</li>
