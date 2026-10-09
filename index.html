@@ -10,6 +10,38 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">Lingua<span>Learn</span></a>
+
+      <div class="skill-search" role="search">
+        <div class="skill-search__field">
+          <svg class="skill-search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+
+          <label class="visually-hidden" for="skillSearch">Search skills</label>
+          <input
+            id="skillSearch"
+            type="search"
+            placeholder="Search skills…  (press / )"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="skillSearchStatus"
+          >
+
+          <button
+            id="skillSearchClear"
+            class="skill-search__clear"
+            type="button"
+            hidden
+            aria-label="Clear search"
+          >&times;</button>
+
+          <div id="searchResults" class="search-results" hidden></div>
+        </div>
+
+        <p id="skillSearchStatus" class="skill-search__status" role="status" aria-live="polite"></p>
+      </div>
+
       <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -25,39 +57,6 @@
       </nav>
     </div>
   </header>
-
-  <div class="skill-search" role="search">
-    <div class="skill-search__field">
-      <svg class="skill-search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <circle cx="11" cy="11" r="7"></circle>
-        <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
-      </svg>
-
-      <label class="visually-hidden" for="skillSearch">Search skills</label>
-      <input
-        id="skillSearch"
-        type="search"
-        placeholder="Search skills…  (press / )"
-        autocomplete="off"
-        spellcheck="false"
-        aria-describedby="skillSearchStatus"
-      >
-
-      <button
-        id="skillSearchClear"
-        class="skill-search__clear"
-        type="button"
-        hidden
-        aria-label="Clear search"
-      >&times;</button>
-
-      <!-- Search results now sit inside the positioned field, directly
-           below the input, instead of far down the page. -->
-      <div id="searchResults" class="search-results" hidden></div>
-    </div>
-
-    <p id="skillSearchStatus" class="skill-search__status" role="status" aria-live="polite"></p>
-  </div>
 
   <section id="home" class="hero">
     <div class="container">
