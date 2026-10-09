@@ -801,3 +801,13 @@ body.menu-open .site-header {
   background: #f3f4f6;
   color: #2d3748;
 }
+
+.nav .cross-link {
+  color: #fbd38d;
+  font-weight: 600;
+}
+
+.nav .cross-link:hover {
+  background: #2b6cb0;
+  color: #fff;
+}
