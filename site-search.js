@@ -163,9 +163,15 @@
         var a = document.createElement("a");
         a.className = "search-result";
         a.href = "#";
-        a.innerHTML =
-          '<span class="search-result__page">' + item.label + "</span>" +
-          '<span class="search-result__text">' + item.text + "</span>";
+        function makeSpan(cls, content) {
+           const el = document.createElement("span");
+           el.className = cls;
+           el.textContent = content;
+           return el;
+         }
+         
+         a.appendChild(makeSpan("search-result__page", item.label));
+         a.appendChild(makeSpan("search-result__text", item.text));
         a.addEventListener("click", function (e) {
           e.preventDefault();
           goToResult(item);
