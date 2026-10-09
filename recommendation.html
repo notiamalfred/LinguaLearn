@@ -39,6 +39,38 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">Lingua<span>Learn</span></a>
+
+      <div class="skill-search" role="search">
+        <div class="skill-search__field">
+          <svg class="skill-search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+
+          <label class="visually-hidden" for="skillSearch">Search skills</label>
+          <input
+            id="skillSearch"
+            type="search"
+            placeholder="Search skills…  (press / )"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="skillSearchStatus"
+          >
+
+          <button
+            id="skillSearchClear"
+            class="skill-search__clear"
+            type="button"
+            hidden
+            aria-label="Clear search"
+          >&times;</button>
+
+          <div id="searchResults" class="search-results" hidden></div>
+        </div>
+
+        <p id="skillSearchStatus" class="skill-search__status" role="status" aria-live="polite"></p>
+      </div>
+
       <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -67,7 +99,7 @@
       <h3 class="part-heading" id="part-books">Books</h3>
       <div class="skill-grid">
         <article class="skill-card book-card">
-          
+
           <h3>The 57 Bus</h3>
           <p class="book-author">by Dashka Slater</p>
           <p><strong>The 57 Bus</strong> is a work of nonfiction by journalist Dashka Slater, published in 2017. It's written for a young adult audience but has been widely read by adults as well, and won several awards, including a Stonewall Book Award.</p>
@@ -89,7 +121,7 @@
         </article>
 
         <article class="skill-card book-card">
-          
+
           <h3>The Perks of Being a Wallflower</h3>
           <p class="book-author">by Stephen Chbosky</p>
           <p><strong>The Perks of Being a Wallflower</strong> is a coming-of-age epistolary novel by Stephen Chbosky, published in 1999. It's written as a series of letters from the protagonist to an anonymous, unnamed recipient — addressed only as "Dear friend" — which gives the book an intimate, diary-like quality.</p>
@@ -109,7 +141,7 @@
         </article>
 
         <article class="skill-card book-card">
-          
+
           <h3>Becoming</h3>
           <p class="book-author">by Michelle Obama</p>
           <p><strong>Becoming</strong> is the memoir of Michelle Obama, published in November 2018. It became a massive bestseller, selling over 10 million copies in its first year and being translated into more than 30 languages — one of the best-selling memoirs of all time.</p>
@@ -125,7 +157,7 @@
         </article>
 
         <article class="skill-card book-card">
-          
+
           <h3>The Alchemist</h3>
           <p class="book-author">by Paulo Coelho</p>
           <p><strong>The Alchemist</strong> by Paulo Coelho is a short, fable-like novel first published in Portuguese in 1988. It's become one of the best-selling books in history, translated into dozens of languages.</p>
@@ -173,4 +205,3 @@
   <script src="site-search.js"></script>
 </body>
 </html>
-
