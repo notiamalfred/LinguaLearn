@@ -808,6 +808,6 @@ body.menu-open .site-header {
 }
 
 .nav .cross-link:hover {
-  background: #2b6cb0;
+  background: #2c5282;   /* deep, muted blue — reads as a subtle pill on the dark green header */
   color: #fff;
 }
