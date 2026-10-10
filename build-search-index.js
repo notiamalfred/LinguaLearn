@@ -37,7 +37,7 @@ for (const page of PAGES) {
 
   const seen = new Set();
 
-  $("h1, h2, h3, h4, h5, h6, p, li, td").each((_, el) => {
+  $("h1, h2, h3, h4, h5, h6, p, li").each((_, el) => {
     const tag = el.tagName.toLowerCase();
     const text = $(el).text().replace(/\s+/g, " ").trim();
 
