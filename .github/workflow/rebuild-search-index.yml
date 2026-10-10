@@ -1,0 +1,30 @@
+name: Rebuild search index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "build-search-index.js"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: node build-search-index.js
+      - name: Commit regenerated index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add search-index.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: rebuild search index"
+          git push
