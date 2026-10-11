@@ -4,7 +4,7 @@
   "use strict";
 
   /* Your Cloudflare Worker URL. Update this if you redeploy with a
-     different subdomain or worker name. */
+     different subdomain or worker name. */ 
   var WORKER_URL = "https://lingualearn.YOUR-SUBDOMAIN.workers.dev";
 
   /* How many commits to display after filtering. */
