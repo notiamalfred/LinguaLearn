@@ -5,7 +5,7 @@
 
   /* Your Cloudflare Worker URL. Update this if you redeploy with a
      different subdomain or worker name. */ 
-  var WORKER_URL = "https://lingualearn.YOUR-SUBDOMAIN.workers.dev";
+  var WORKER_URL = "https://lingualearn.hohimsmp.workers.dev";
 
   /* How many commits to display after filtering. */
   var MAX_COMMITS = 10;
