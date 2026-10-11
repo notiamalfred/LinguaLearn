@@ -7,6 +7,7 @@
   <title>Sign in — LinguaLearn</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="flashcards.css" />
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body class="fc-scope">
   <header class="site-header">
@@ -50,10 +51,7 @@
             <label class="fc-check"><input type="checkbox" id="show-password" /> Show password</label>
           </div>
 
-          <form method="POST">
-            <div class="h-captcha" data-sitekey="3688a0ee-92d2-4c02-b312-1b84f89e0776"></div>
-            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-          </form>
+          <div class="h-captcha" data-sitekey="3688a0ee-92d2-4c02-b312-1b84f89e0776"></div>
 
           <button type="submit" class="fc-btn fc-btn--next fc-btn--block" id="auth-submit">Sign in</button>
         </form>
