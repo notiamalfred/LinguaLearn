@@ -64,6 +64,61 @@ for (const page of PAGES) {
   console.log(`  indexed ${page.file} (${index.length} entries so far)`);
 }
 
+/* ------------------------------------------------------------------ */
+/*  Index passages.js content (used by inspirational.html)            */
+/* ------------------------------------------------------------------ */
+const passagesPath = path.join(__dirname, "passages.js");
+if (fs.existsSync(passagesPath)) {
+  try {
+    const passagesCode = fs.readFileSync(passagesPath, "utf8");
+    /* Run passages.js in its own scope and grab the array */
+    const passagesData = new Function(passagesCode + "; return passages;")();
+
+    const seen = new Set();
+
+    for (const passage of passagesData) {
+      const topic = (passage.topic || "").trim();
+      const text  = (passage.text  || "").trim();
+
+      /* Index the topic */
+      if (topic.length >= 2 && !seen.has(topic)) {
+        seen.add(topic);
+        index.push({
+          page: "inspirational.html",
+          label: "Inspirational Words",
+          tag: "h3",
+          text: topic,
+          slug: topic.toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .trim()
+            .replace(/\s+/g, "-")
+            .slice(0, 80)
+        });
+      }
+
+      /* Index the passage body */
+      if (text.length >= 2 && !seen.has(text)) {
+        seen.add(text);
+        index.push({
+          page: "inspirational.html",
+          label: "Inspirational Words",
+          tag: "p",
+          text: text,
+          slug: text.toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .trim()
+            .replace(/\s+/g, "-")
+            .slice(0, 80)
+        });
+      }
+    }
+
+    console.log(`  indexed passages.js (${index.length} entries so far)`);
+  } catch (err) {
+    console.warn("  could not parse passages.js:", err.message);
+  }
+}
+
 fs.writeFileSync(
   path.join(__dirname, "search-index.json"),
   JSON.stringify(index, null, 0)
