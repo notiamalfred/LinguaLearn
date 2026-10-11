@@ -823,3 +823,56 @@ body.menu-open .site-header {
   padding: 0 2px;
   border-radius: 2px;
 }
+
+/* ---------- Update Log ---------- */
+.update-log {
+  padding: 64px 0;
+  background: #fff;
+}
+
+.update-log h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #2b6cb0;
+}
+
+.commit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.commit-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: #f7fafc;
+  border-left: 4px solid #2b6cb0;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.commit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.commit-message {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.commit-meta {
+  font-size: 0.85rem;
+  color: #718096;
+  display: flex;
+  gap: 12px;
+}
+
+.commit-author {
+  font-weight: 500;
+}
