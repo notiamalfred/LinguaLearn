@@ -67,7 +67,11 @@
     submit.disabled = true;
     say("");
     try {
-      const { error } = await db.auth.updateUser({ password: pw });
+      const { error } = await db.auth.updateUser({
+        password: pw,
+        options: { captchaToken: getCaptchaToken() },
+      });
+      resetCaptcha();
       if (error) {
         if (error.code === "same_password" || error.code === "weak_password") say(error.message, "error");
         else say("We couldn't change your password. The link may have expired; request a new one.", "error");
