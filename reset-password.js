@@ -21,6 +21,18 @@
   }
   const db = window.LL.db;
 
+  // --- hCaptcha helpers ---
+  function getCaptchaToken() {
+    const el = document.querySelector('[name="h-captcha-response"]');
+    return el ? el.value : "";
+  }
+
+  function resetCaptcha() {
+    if (window.hcaptcha && window.hcaptcha.reset) {
+      window.hcaptcha.reset();
+    }
+  }
+
   let ready = false;
   say("Checking your reset link…");
 
