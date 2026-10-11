@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'" />
+  <title>Daily Review — LinguaLearn</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="flashcards.css" />
+</head>
+<body class="fc-scope">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Lingua<span>Learn</span></a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="listening.html">Listening</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="vocabulary.html">Vocabulary</a>
+        <a href="flashcards.html">Daily Review</a>
+        <a href="inspirational.html">Inspirational Words</a>
+        <a href="recommendation.html">Recommendations</a>
+        <a href="https://notiamalfred.github.io/EconLearn" class="cross-link">EconLearn ↗</a>
+        <a href="https://notiamalfred.github.io/MathLearn/" class="cross-link">MathLearn ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="skill-page">
+    <div class="container">
+      <div class="fc-wrap">
+        <h2>Daily Review</h2>
+        <p class="section-subtitle">Five words a day. Words you miss come back in your next review.</p>
+
+        <p id="fc-status" class="fc-message" role="status" aria-live="polite">Loading today's words…</p>
+
+        <div id="fc-app" hidden>
+          <p class="fc-progress" id="fc-progress"></p>
+
+          <div class="fc-scene">
+            <div class="fc-card" id="fc-card">
+              <div class="fc-face fc-front" id="fc-front" tabindex="-1">
+                <p class="fc-prompt">Do you know this word?</p>
+                <h3 class="fc-word" id="fc-word"></h3>
+              </div>
+              <div class="fc-face fc-back" id="fc-back" tabindex="-1" aria-hidden="true">
+                <h3 class="fc-word-back" id="fc-word-back"></h3>
+                <dl class="fc-details" id="fc-details"></dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="fc-actions" id="fc-choices">
+            <button type="button" class="fc-btn fc-btn--know" id="fc-know">I know this word</button>
+            <button type="button" class="fc-btn fc-btn--dont" id="fc-dont-know">I don't know this word</button>
+          </div>
+
+          <div id="fc-after" hidden>
+            <p class="fc-feedback" id="fc-feedback" role="status" aria-live="polite"></p>
+            <p class="fc-message fc-message--error" id="fc-save-error" role="alert" hidden>
+              We couldn't save that answer.
+              <button type="button" class="fc-linkbtn" id="fc-retry">Try again</button>
+            </p>
+            <div class="fc-actions">
+              <button type="button" class="fc-btn fc-btn--next" id="fc-next">Next word</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="fc-done" hidden>
+          <h3 class="fc-done-title">That's today's review.</h3>
+          <p id="fc-summary"></p>
+          <div id="fc-retry-wrap" hidden>
+            <p>These will come back in your next review:</p>
+            <ul id="fc-retry-list"></ul>
+          </div>
+          <p><a href="vocabulary.html">Browse the full vocabulary list</a></p>
+        </div>
+
+        <p class="fc-account">
+          <span id="fc-user"></span>
+          <button type="button" class="fc-linkbtn" id="fc-signout">Sign out</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Keep learning, keep growing.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="vocab-data.js"></script>
+  <script src="menu.js"></script>
+  <script src="flashcards.js"></script>
+</body>
+</html>
