@@ -52,6 +52,7 @@
 
   function setMode(next) {
     mode = next;
+    resetCaptcha();
     const m = MODES[next];
     title.textContent = m.title;
     subtitle.textContent = m.subtitle;
