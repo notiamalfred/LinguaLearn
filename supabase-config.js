@@ -3,5 +3,5 @@
 // NEVER put the service_role / secret key here or anywhere in this repo.
 window.LINGUALEARN_CONFIG = {
   SUPABASE_URL: "https://dcvbtmexubelihosblqq.supabase.co/rest/v1/",
-  apikey: "sb_publishable_WJjF3219HNuCnhXKgxBfVA_lLOOfw2Q",
+  SUPABASE_ANON_KEY: "sb_publishable_WJjF3219HNuCnhXKgxBfVA_lLOOfw2Q",
 };
