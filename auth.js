@@ -4,7 +4,7 @@
   "use strict";
 
   const cfg = window.LINGUALEARN_CONFIG || {};
-  if (!window.supabase || !cfg.SUPABASE_URL || !cfg.apikey || /YOUR-/.test(cfg.SUPABASE_URL + cfg.apikey)) {
+  if (!window.supabase || !cfg.SUPABASE_URL || !cfg.SUPABASE_ANON_KEY || /YOUR-/.test(cfg.SUPABASE_URL + cfg.SUPABASE_ANON_KEY)) {
     console.error("LinguaLearn: Supabase isn't configured. Check supabase-config.js and the supabase-js <script> tag.");
     window.LL = null;
     return;
