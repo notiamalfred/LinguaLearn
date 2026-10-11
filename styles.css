@@ -811,3 +811,15 @@ body.menu-open .site-header {
   background: #2c5282;   /* deep, muted blue — reads as a subtle pill on the dark green header */
   color: #fff;
 }
+
+.mark-green {
+  background: #c6f6d5;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.mark-red {
+  background: #fed7d7;
+  padding: 0 2px;
+  border-radius: 2px;
+}
