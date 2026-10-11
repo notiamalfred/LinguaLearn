@@ -29,6 +29,18 @@
   }
   const db = window.LL.db;
 
+  // --- hCaptcha helpers ---
+  function getCaptchaToken() {
+    const el = document.querySelector('[name="h-captcha-response"]');
+    return el ? el.value : "";
+  }
+  
+  function resetCaptcha() {
+    if (window.hcaptcha && window.hcaptcha.reset) {
+      window.hcaptcha.reset();
+    }
+  }
+
   const MODES = {
     signin: { title: "Sign in", subtitle: "Pick up your daily vocabulary review.", submit: "Sign in", password: true, autocomplete: "current-password" },
     signup: { title: "Create an account", subtitle: "Your progress is saved so missed words come back in your next review.", submit: "Create account", password: true, autocomplete: "new-password" },
@@ -73,46 +85,57 @@
   }
 
   async function signIn(email, password) {
-    const { error } = await db.auth.signInWithPassword({ email, password });
+    const { error } = await db.auth.signInWithPassword({
+      email,
+      password,
+      options: { captchaToken: getCaptchaToken() },
+    });
+    resetCaptcha(); // always reset after the request
+  
     if (error) {
       pwInput.value = "";
       if (error.name === "AuthRetryableFetchError") {
         say("We couldn't reach the server. Check your connection and try again.", "error");
         return;
       }
-      // One message for every failure, so it never reveals whether an email has an account.
       say("We couldn't sign you in. Check your email and password, and make sure you've confirmed your email address.", "error");
-      await sleep(1000); // small pause slows down guessing from this page
+      await sleep(1000);
       return;
     }
     location.replace("flashcards.html");
   }
-
   async function signUp(email, password) {
     const { data, error } = await db.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: window.LL.pageUrl("login.html") },
+      options: {
+        emailRedirectTo: window.LL.pageUrl("login.html"),
+        captchaToken: getCaptchaToken(),
+      },
     });
+    resetCaptcha(); // always reset after the request
+  
     if (error) {
       if (error.code === "weak_password" || error.status === 429) say(error.message, "error");
       else say("We couldn't create the account. Please try again in a moment.", "error");
       return;
     }
-    if (data.session) { // only when email confirmation is switched off in Supabase
+    if (data.session) {
       location.replace("flashcards.html");
       return;
     }
     setMode("signin");
     emailInput.value = email;
-    // Same wording whether or not the address was already registered.
     say("If that address can be used for a new account, a confirmation link is on its way. Open it, then sign in here.", "success");
   }
 
   async function forgot(email) {
     const { error } = await db.auth.resetPasswordForEmail(email, {
       redirectTo: window.LL.pageUrl("reset-password.html"),
+      captchaToken: getCaptchaToken(), // add this
     });
+    resetCaptcha(); // always reset after the request
+  
     if (error && error.status === 429) {
       say("Too many requests. Please wait a few minutes and try again.", "error");
       return;
