@@ -76,19 +76,21 @@ if (fs.existsSync(passagesPath)) {
 
     const seen = new Set();
 
-    for (const passage of passagesData) {
+    for (let i = 0; i < passagesData.length; i++) {
+      const passage = passagesData[i];
       const topic = (passage.topic || "").trim();
       const text  = (passage.text  || "").trim();
 
-      /* Index the topic */
-      if (topic.length >= 2 && !seen.has(topic)) {
-        seen.add(topic);
+      /* Index the topic (with the numeric prefix that app.js renders) */
+      const topicWithNum = `${i + 1}. ${topic}`;
+      if (topicWithNum.length >= 2 && !seen.has(topicWithNum)) {
+        seen.add(topicWithNum);
         index.push({
           page: "inspirational.html",
           label: "Inspirational Words",
           tag: "h3",
-          text: topic,
-          slug: topic.toLowerCase()
+          text: topicWithNum,
+          slug: topicWithNum.toLowerCase()
             .replace(/[^a-z0-9\s-]/g, "")
             .trim()
             .replace(/\s+/g, "-")
