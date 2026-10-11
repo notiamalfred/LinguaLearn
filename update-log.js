@@ -3,32 +3,55 @@
 (function () {
   "use strict";
 
-  var GITHUB_USER = "notiamalfred";
-  var GITHUB_REPO = "LinguaLearn";
-  var MAX_COMMITS = 10; // Number of commits to show
+  /* Your Cloudflare Worker URL. Update this if you redeploy with a
+     different subdomain or worker name. */
+  var WORKER_URL = "https://lingualearn.YOUR-SUBDOMAIN.workers.dev";
+
+  /* How many commits to display after filtering. */
+  var MAX_COMMITS = 10;
+
+  /* Commit messages matching any of these patterns will be hidden.
+     Case-insensitive. */
+  var HIDDEN_PATTERNS = [
+    /^chore: rebuild search index/i
+  ];
 
   var container = document.getElementById("commit-list");
 
   if (!container) return;
+
+  /* ------------------------------------------------------------------ */
+  /*  Helpers                                                           */
+  /* ------------------------------------------------------------------ */
+  function isHidden(commit) {
+    var message = (commit.commit && commit.commit.message) || "";
+    for (var i = 0; i < HIDDEN_PATTERNS.length; i++) {
+      if (HIDDEN_PATTERNS[i].test(message)) return true;
+    }
+    return false;
+  }
 
   function formatDate(dateString) {
     var date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "short",
-      day: "numeric",
+      day: "numeric"
     });
   }
 
   function renderCommits(commits) {
-    if (!commits || commits.length === 0) {
+    /* Drop hidden commits (e.g. automated search-index rebuilds) */
+    var visible = commits.filter(function (c) { return !isHidden(c); });
+
+    if (!visible.length) {
       container.innerHTML = "<p>No recent updates found.</p>";
       return;
     }
 
-    container.innerHTML = ""; // Clear loading message
+    container.innerHTML = "";
 
-    commits.slice(0, MAX_COMMITS).forEach(function (commit) {
+    visible.slice(0, MAX_COMMITS).forEach(function (commit) {
       var a = document.createElement("a");
       a.className = "commit-item";
       a.href = commit.html_url;
@@ -58,21 +81,15 @@
     });
   }
 
-  // Show a loading message
+  /* ------------------------------------------------------------------ */
+  /*  Fetch                                                             */
+  /* ------------------------------------------------------------------ */
   container.innerHTML = "<p>Loading recent updates...</p>";
 
-  // Fetch commits from the GitHub API
-  fetch(
-    "https://api.github.com/repos/" +
-      GITHUB_USER +
-      "/" +
-      GITHUB_REPO +
-      "/commits?per_page=" +
-      MAX_COMMITS
-  )
+  fetch(WORKER_URL)
     .then(function (response) {
       if (!response.ok) {
-        throw new Error("GitHub API request failed with status " + response.status);
+        throw new Error("Worker request failed with status " + response.status);
       }
       return response.json();
     })
