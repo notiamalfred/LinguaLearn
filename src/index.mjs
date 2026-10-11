@@ -8,6 +8,7 @@ export default {
       headers: {
         "User-Agent": "LinguaLearn-Update-Log",
         "Accept": "application/vnd.github+json",
+        "Authorization": `Bearer ${env.GITHUB_TOKEN}`
       },
     });
 
