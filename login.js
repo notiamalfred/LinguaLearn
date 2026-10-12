@@ -131,6 +131,11 @@
   }
 
   async function forgot(email) {
+    const captchaToken = getCaptchaToken();
+    if (!captchaToken) {
+      say("Please complete the human verification first.", "error");
+      return;
+    }
     const { error } = await db.auth.resetPasswordForEmail(email, {
       redirectTo: window.LL.pageUrl("reset-password.html"),
       captchaToken: getCaptchaToken(), // add this
