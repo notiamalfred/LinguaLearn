@@ -15,7 +15,6 @@
   const message = $("auth-message");
   const toSignup = $("to-signup");
   const toSignin = $("to-signin");
-  const toForgot = $("to-forgot");
 
   function say(text, kind) {
     message.textContent = text;
@@ -43,9 +42,7 @@
 
   const MODES = {
     signin: { title: "Sign in", subtitle: "Pick up your daily vocabulary review.", submit: "Sign in", password: true, autocomplete: "current-password" },
-    signup: { title: "Create an account", subtitle: "Your progress is saved so missed words come back in your next review.", submit: "Create account", password: true, autocomplete: "new-password" },
-    forgot: { title: "Reset your password", subtitle: "Enter your email and we'll send you a reset link.", submit: "Send reset link", password: false },
-  };
+    signup: { title: "Create an account", subtitle: "Your progress is saved so missed words come back in your next review.", submit: "Create account", password: true, autocomplete: "new-password" },  };
 
   let mode = "signin";
   let busy = false;
@@ -65,7 +62,6 @@
     pwInput.type = "password";
     showPw.checked = false;
     toSignup.hidden = next !== "signin";
-    toForgot.hidden = next !== "signin";
     toSignin.hidden = next === "signin";
     say("");
   }
@@ -140,27 +136,6 @@
     say("If that address can be used for a new account, a confirmation link is on its way. Open it, then sign in here.", "success");
   }
 
-  async function forgot(email) {
-    const captchaToken = getCaptchaToken();
-    if (!captchaToken) {
-      say("Please complete the human verification first.", "error");
-      return;
-    }
-    const { error } = await db.auth.resetPasswordForEmail(email, {
-      redirectTo: window.LL.pageUrl("reset-password.html"),
-      captchaToken: getCaptchaToken(), // add this
-    });
-    resetCaptcha(); // always reset after the request
-  
-    if (error && error.status === 429) {
-      say("Too many requests. Please wait a few minutes and try again.", "error");
-      return;
-    }
-    setMode("signin");
-    emailInput.value = email;
-    say("If an account exists for that address, a reset link is on its way.", "success");
-  }
-
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (busy) return;
@@ -200,7 +175,6 @@
 
   toSignup.addEventListener("click", () => setMode("signup"));
   toSignin.addEventListener("click", () => setMode("signin"));
-  toForgot.addEventListener("click", () => setMode("forgot"));
   showPw.addEventListener("change", () => {
     pwInput.type = showPw.checked ? "text" : "password";
   });
