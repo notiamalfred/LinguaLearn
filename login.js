@@ -86,6 +86,11 @@
   }
 
   async function signIn(email, password) {
+    const captchaToken = getCaptchaToken();
+    if (!captchaToken) {
+      say("Please complete the human verification first.", "error");
+      return;
+    }
     const { error } = await db.auth.signInWithPassword({
       email,
       password,
@@ -106,6 +111,11 @@
     location.replace("flashcards.html");
   }
   async function signUp(email, password) {
+    const captchaToken = getCaptchaToken();
+    if (!captchaToken) {
+      say("Please complete the human verification first.", "error");
+      return;
+    }
     const { data, error } = await db.auth.signUp({
       email,
       password,
