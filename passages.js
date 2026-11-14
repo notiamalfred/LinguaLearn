@@ -26,5 +26,21 @@ const passages = [
   {
     topic: "Spotlight Effect",
     text: "The spotlight effect: a phenomenon in which people tend to believe they are being noticed more than they really are. This comes into play most often when you've chosen to do something atypical, but it also applies to physical appearance, conversation, and many other aspects of life. Simply put, people think that other people are paying way more attention to them than they really are. The misconception makes sense: you are the center of your own universe, so it's only natural to think that you are the center of other people's universe, too. Or at least in the vicinity of the center of their universe. Fortunately, this is not true. Eagles understand this is not true. No one will notice and absolutely no one will remember if you chose to use \"communication\" or \"collaboration\" in your slide deck. Ten minutes after your presentation, you won't care, either."
+  },
+  {
+    topic: "Perfection",
+    text: "\"Don't let perfect be the enemy of good\" establishes an expectation of good, when in truth, creative people - the markers of stuff - make terrible things all the time. We must. Creation is hard. It is messy and ugly and fraught with struggle and failure. It's an oftentimes miserable journey literred with cast-offs, botched experiments, fitful starts, unmitigated disasters, and utter failures. We must accept this if we want to make something good. We must be willing to fail again and again and again in order to find our way to goodness and, sometimes, greatness."
+  },
+  {
+    topic: "Being ordinary",
+    text: "I see a hell of a lot of people living ordinary lives, but very few grew up dreaming of one day being ordinary. Yet here they are. Everywhere. Ordinary. I see these people. I look hard at them, because they serve as reminders to me that if I had chosen the easier pathway, that could be me, too. Good job, Matt! Even if I'm falling on my ass or landing on my face, at least I'm failing while trying. Climbing and slipping and falling but then picking myself up and trying again. If you're chasing your dreams - if you're trying to make great things or carve a new path or bend the universe to your will - you're already doing better than most of the human beings on this planet. Many live in circumstances that tragically don't allow them to chase their dreams. Others have the means and ability but simply don't."
+  },
+  {
+    topic: "Fitting In",
+    text: "It's simple: you can't stand out and fit in at the same time. If you never make anything, if you make only what you're comfortable making, or if you make but you never share, you're hiding. Once you start hiding, you stop growing. Part of you goes to sleep. Even as I reached what I thought was my creative zenith, it took an avalanche to reveal an even deeper level of authenticity. I meet so many people who get stuck at such a point without even realizing it."
+  },
+  {
+    topic: "Opening up",
+    text: "Trying to Be Liked Makes You Less Likeable. Growing up, we build up layer after layer after layer of protection to keep ourselves safe. Every time we say something weird in class and the other kids laugh at us or we get picked last for a team, every time we put ourselves out there and fall flat on our faces, another layer of scar tissue is added. Eventually our real selves, and everything that makes us worth knowing, are buried. The central relational paradox, a concept developed by the noted psychiatrist Jean Baker Miller, is simple but profound: we all want close, intimate relationships. That means we need people to like us. The problem is, we worry that they won't like all of us, so we hide the parts we consider bad or just different. When our true selves are hidden, other people find it very difficult to connect with us. They can tell we're closed off, and they don't feel safe opening up to us. Therefore - cue the paradox - we end up without any close, intimate relationships. See the problem?"
   }
 ];
