@@ -12,10 +12,10 @@ const MENU_ITEMS = [
   { label: "Login",       href: "login.html" },
 
   // External links — use the complete URL including https://
-  { label: "EconLearn ↗",
+  { label: "EconLearn",
     href: "https://notiamalfred.github.io/EconLearn/",
     external: true },
-  { label: "MathLearn ↗",
+  { label: "MathLearn",
     href: "https://notiamalfred.github.io/MathLearn/",
     external: true },
 ];
