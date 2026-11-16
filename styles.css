@@ -929,3 +929,8 @@ body.menu-open .site-header {
   color: #4a5568;
   font-size: 0.95rem;
 }
+
+.nav-links a.active {
+  font-weight: 700;
+  border-bottom: 2px solid currentColor;
+}
