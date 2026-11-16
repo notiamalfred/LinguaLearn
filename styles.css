@@ -931,7 +931,43 @@ body.menu-open .site-header {
 }
 
 .nav-links {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+  list-style: none;      /* Kills the bullet points */
+  padding: 0;            /* Removes the default left indent */
+  margin: 0;             
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;          /* Creates the nice vertical spacing between links */
+  margin-top: 2rem;      /* Pushes the menu down below the logo */
+}
+
+.nav-links a {
+  color: #e2e8f0;        /* Light gray text */
+  text-decoration: none; /* Removes default underline */
+  font-size: 1.1rem;     
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;        /* Turns white on hover */
+}
+
+/* Style specifically for external links */
+.nav-links a.external {
+  color: #fbbf24;        /* The orange/yellow color from your good image */
+  font-weight: 600;
+}
+
+/* Adds the little arrow (↗) automatically via CSS */
+.nav-links a.external::after {
+  content: " \2197"; 
+  font-size: 0.85em;
+}
+
+.nav-links a.active {
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px; /* Pushes the line down so it doesn't touch the text */
 }
