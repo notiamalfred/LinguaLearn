@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 'unsafe-inline' for styles is needed because MathJax injects its own <style> and style attributes. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'" />
+  <title>Practice Questions — MathLearn</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="account.css" />
+  <script src="mathjax-config.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="ml-scope">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Math<span>Learn</span></a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <ul class="nav-links" id="main-menu"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="skill-page">
+    <div class="container">
+      <div class="ml-wrap">
+        <h2>Practice Questions</h2>
+        <p class="section-subtitle">Choose Core or M2, pick a topic (and a question type if the topic has them), then work through the questions.</p>
+
+        <p id="status" class="ml-message" role="status" aria-live="polite">Checking your account…</p>
+
+        <!-- Nothing below is shown until the server has confirmed the user is signed in. -->
+        <div id="app" hidden>
+          <p class="ml-crumbs" id="crumbs" aria-label="Your choices"></p>
+
+          <!-- Step 1: Core or M2 -->
+          <div id="step-syllabus" hidden>
+            <h3 class="ml-step-title" id="title-syllabus" tabindex="-1">1. Choose a syllabus</h3>
+            <div class="ml-choices" id="syllabus-choices"></div>
+          </div>
+
+          <!-- Step 2: topic -->
+          <div id="step-topic" hidden>
+            <h3 class="ml-step-title" id="title-topic" tabindex="-1">2. Choose a topic</h3>
+            <div class="ml-choices" id="topic-choices"></div>
+            <p class="ml-empty" id="topic-empty" hidden></p>
+            <button type="button" class="ml-linkbtn ml-back" id="back-to-syllabus">← Change syllabus</button>
+          </div>
+
+          <!-- Step 3 (only for topics that have question types): which type of question -->
+          <div id="step-type" hidden>
+            <h3 class="ml-step-title" id="title-type" tabindex="-1">3. Choose a question type</h3>
+            <div class="ml-choices" id="type-choices"></div>
+            <button type="button" class="ml-linkbtn ml-back" id="back-to-topics-from-types">← Change topic</button>
+          </div>
+
+          <!-- Last step: the questions -->
+          <div id="step-quiz" hidden>
+            <h3 class="ml-step-title" id="title-quiz" tabindex="-1">3. Questions</h3>
+
+            <div id="quiz-body">
+              <p class="ml-progress" id="progress"></p>
+              <div class="ml-bar" aria-hidden="true"><div class="ml-bar-fill" id="bar"></div></div>
+
+              <label class="ml-check ml-savebox">
+                <input type="checkbox" id="save-progress" />
+                <span id="save-label">Save my progress in this topic</span>
+              </label>
+              <p class="ml-hint ml-savehint" id="save-status" role="status" aria-live="polite"></p>
+
+              <article class="ml-qcard">
+                <span class="ml-level" id="level"></span>
+                <p class="ml-question" id="question"></p>
+                <div class="ml-qimages" id="qimages" hidden></div>
+                <div class="ml-answer" id="answer" hidden>
+                  <span class="ml-answer-label">Answer</span>
+                  <span class="ml-answer-text" id="answer-text"></span>
+                  <div class="ml-steps" id="steps" hidden>
+                    <span class="ml-answer-label">Steps and explanation</span>
+                    <div class="ml-steps-text" id="steps-text"></div>
+                    <div class="ml-qimages" id="steps-images" hidden></div>
+                  </div>
+                </div>
+              </article>
+
+              <div class="ml-actions">
+                <button type="button" class="ml-btn" id="prev">← Previous</button>
+                <button type="button" class="ml-btn ml-btn--primary" id="toggle-answer" aria-expanded="false">Show answer</button>
+                <button type="button" class="ml-btn" id="next">Next →</button>
+              </div>
+            </div>
+
+            <div class="ml-done" id="done" hidden>
+              <h3 id="done-title">You've reached the end.</h3>
+              <p id="done-text"></p>
+              <div class="ml-actions">
+                <button type="button" class="ml-btn ml-btn--primary" id="restart">Start again</button>
+                <button type="button" class="ml-btn" id="done-types" hidden>Choose another question type</button>
+                <button type="button" class="ml-btn" id="done-topics">Choose another topic</button>
+              </div>
+            </div>
+
+            <p class="ml-back">
+              <button type="button" class="ml-linkbtn" id="back-to-types" hidden>← Change question type</button>
+              <button type="button" class="ml-linkbtn" id="back-to-topics">← Change topic</button>
+            </p>
+          </div>
+
+          <p class="ml-account">
+            <span id="user"></span>
+            <button type="button" class="ml-linkbtn" id="signout">Sign out</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Keep learning, keep growing.</p>
+    </div>
+  </footer>
+  <script src="menu-data.js"></script>
+  <script src="menu-builder.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
+    crossorigin="anonymous"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="menu.js"></script>
+  <!-- question-data.js is deliberately NOT listed here: questions.js loads it only after sign-in is confirmed. -->
+  <script src="questions.js"></script>
+</body>
+</html>
