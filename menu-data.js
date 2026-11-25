@@ -11,11 +11,7 @@ const MENU_ITEMS = [
   { label: "Flashcards",       href: "flashcards.html" },
   { label: "Login",       href: "login.html" },
 
-  // External links — use the complete URL including https://
-  { label: "EconLearn",
-    href: "https://notiamalfred.github.io/EconLearn/",
-    external: true },
-  { label: "MathLearn",
-    href: "https://notiamalfred.github.io/MathLearn/",
-    external: true },
+  { label: "MathLearn", href: "https://notiamalfred.github.io/MathLearn/", external: true },
+  { label: "PhysicsLearn", href: "https://notiamalfred.github.io/PhysicsLearn/", external: true },
+  { label: "ICTLearn", href: "https://notiamalfred.github.io/ICTLearn/", external: true },
 ];
